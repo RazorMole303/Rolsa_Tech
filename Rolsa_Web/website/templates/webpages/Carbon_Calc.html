@@ -1,0 +1,62 @@
+<form onsubmit="
+  event.preventDefault();
+  let elecKwh = parseFloat(document.getElementById('elec').value) || 0;
+  let gasKwh = parseFloat(document.getElementById('gas').value) || 0;
+  let occupants = parseInt(document.getElementById('people').value) || 1;
+  let postcode = document.getElementById('area').value.trim();
+  let msg = document.getElementById('res');
+
+  if (elecKwh < 0 || gasKwh < 0 || occupants < 1) {
+    msg.textContent = 'Please enter valid numbers.';
+    return;
+  }
+
+  /* Calculations: Gas emissions factor ≈ 0.183 kg CO2/kWh */
+  let elecCarbon = elecKwh * 0.207;
+  let gasCarbon = gasKwh * 0.183;
+  let totalCarbon = elecCarbon + gasCarbon;
+  let perCapitaCarbon = totalCarbon / occupants;
+
+  /* Carbon Intensity API by Outward Postcode */
+  let outcode = postcode.split(' ')[0];
+  let endpoint = outcode ? `https://api.carbonintensity.org.uk/regional/postcode/${outcode}` : 'https://api.carbonintensity.org.uk/intensity';
+
+  fetch(endpoint)
+    .then(res => res.json())
+    .then(data => {
+      let intensity = outcode ? data.data[0].data[0].intensity.forecast : data.data[0].intensity.forecast;
+      
+      /* Estimate average regional carbon benchmark per household (adjusted for occupants) */
+      let avgHouseholdCarbon = (intensity / 10) + (1000 * 0.183 / occupants);
+
+      let text = `Total Household Footprint: ${totalCarbon.toFixed(2)} kg CO2.<br>`;
+      text += `Per Person Emissions: ${perCapitaCarbon.toFixed(2)} kg CO2 (${occupants} person/s).<br><br>`;
+
+      if (avgHouseholdCarbon > perCapitaCarbon) {
+        text += '<strong>You emit less carbon than the rest of your community!</strong>';
+      } else {
+        text += '<strong>You emit more carbon than the average house in your area.</strong>';
+      }
+
+      msg.innerHTML = text;
+    })
+    .catch(() => {
+      msg.textContent = 'Error connecting to Carbon Intensity API.';
+    });
+">
+  <label for="elec">Electricity Usage (kWh):</label><br>
+  <input type="number" id="elec" step="any" required><br><br>
+
+  <label for="gas">Gas Usage (kWh):</label><br>
+  <input type="number" id="gas" step="any" required><br><br>
+
+  <label for="people">Number of Occupants:</label><br>
+  <input type="number" id="people" min="1" value="1" required><br><br>
+
+  <label for="area">Local Area / UK Postcode (e.g. SW1A):</label><br>
+  <input type="text" id="area" required><br><br>
+
+  <button type="submit">Calculate</button>
+</form>
+
+<p id="res"></p>
