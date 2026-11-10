@@ -1,3 +1,7 @@
+{% extends "base.html" %}
+{% load static %}   
+
+{% block content %}
 <form onsubmit="
   event.preventDefault();
   let elecKwh = parseFloat(document.getElementById('elec').value) || 0;
@@ -60,3 +64,5 @@
 </form>
 
 <p id="res"></p>
+
+{% endblock %}

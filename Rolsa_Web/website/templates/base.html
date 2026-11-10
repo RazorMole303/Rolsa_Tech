@@ -4,9 +4,13 @@
 <html lang="en">
 <head>
    {% bootstrap_css %}
+   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-<h1 bg="dark">Rolsa Tech</h1>
+
+    <header class="custom-title-bar shadow-sm">
+        <h1 id="Rolsa_Header">Rolsa Tech</h1>
+    </header>
 {% for message in messages %}
     {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
     <div class="toast bg-success show align-items-center position-fixed bottom-0 end-0 z-3" role="alert" aria-live="assertive" aria-atomic="true">

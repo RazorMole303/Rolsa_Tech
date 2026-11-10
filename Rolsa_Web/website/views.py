@@ -33,3 +33,8 @@ class CustomLoginView(LoginView):
     def post(self,request, *args, **kuargs):
         messages.success(request, "You have succesfully logged in")
         return super().post(request, *args, **kuargs)
+
+
+def calculator(request):
+    return render (request,"webpages/calculator.html")
+
