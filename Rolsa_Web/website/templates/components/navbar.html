@@ -11,14 +11,17 @@
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
+          <!-- Link for the Home button -->
           <a class="nav-link active" aria-current="page" href="{%url '' %}">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{%url 'about' %}">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Store</a>
+          <!-- Link for the Store button -->
+          <a class="nav-link" href="{% url 'store' %}">Store</a>
         </li>
+        <!-- Link for the Login and logout button makes sure user isn't logged in to display login, must be logged in to see  -->
         {%if not user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'login' %}">Login</a>

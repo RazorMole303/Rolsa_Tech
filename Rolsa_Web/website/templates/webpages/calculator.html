@@ -2,7 +2,7 @@
 {% load static %}   
 
 {% block content %}
-<form onsubmit="
+<form position-centre onsubmit="
   event.preventDefault();
   let elecKwh = parseFloat(document.getElementById('elec').value) || 0;
   let gasKwh = parseFloat(document.getElementById('gas').value) || 0;

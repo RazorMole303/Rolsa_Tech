@@ -10,7 +10,8 @@ urlpatterns = [
     path("logout", CustomLogoutView.as_view(), name="logout"),
     path('about/', views.about, name="about"),
     path('register/', views.register, name="register"),
-    path('calculator/', views.calculator, name="calculator")
+    path('calculator/', views.calculator, name="calculator"),
+    path('store/', views.store, name='store'),
 ]
 
 

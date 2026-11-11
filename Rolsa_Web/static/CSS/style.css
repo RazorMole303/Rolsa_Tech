@@ -1,19 +1,17 @@
 :root {
-  --bs-primary: #CD5334;
-  --bs-primary-rgb: 48, 112, 0;
-  --bs-secondary: #C3423F;
-  --bs-secondary-rgb: 226, 182, 10;
-  --bs-tertiary: #FDE74C ;
-  --bs-tertiary-rgb: 253, 231, 76;
+  --bs-primary: #0b5d3a;
+  --bs-primary-rgb: 11, 93, 58;
+  --bs-secondary: #d8f3dc;
+  --bs-secondary-rgb: 216, 243, 220;
+  --bs-success: #0f7d4f;
+  --bs-body-bg: #edf3ee;
 }
 
 .custom-title-bar {
     background-color: #000000;
     color: #ff0000;
-    
 }
 
-/* Ensures heading elements inherit the red text color */
 .custom-title-bar h1,
 .custom-title-bar p {
     color: inherit;
@@ -21,27 +19,119 @@
 }
 
 body {
-    background-color: #CECECE; /* Light grey */
+    background: linear-gradient(180deg, #eaf6ef 0%, #edf3ee 100%);
+    color: #0f172a;
+    font-family: Arial, sans-serif;
 }
 
-
-@font-face{
-    font-family: Nico;
-    src: url('../font/NicoMoji-Regular.ttf')
-}
-
-.navbar{
-    font-family: Nico;
-    font-size: 50px;
-}
-
-.Rolsa_Header{
+@font-face {
     font-family: Nico;
     src: url('../font/NicoMoji-Regular.ttf');
 }
 
+.navbar {
+    font-family: Nico;
+    font-size: 28px;
+}
 
-h1{
+.Rolsa_Header {
     font-family: Nico;
     src: url('../font/NicoMoji-Regular.ttf');
+}
+
+h1,
+h2,
+h3 {
+    font-family: Nico, Arial, sans-serif;
+}
+
+.store-heading {
+    margin-top: 2rem;
+}
+
+.section-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    color: #0f7d4f;
+    font-weight: 700;
+}
+
+.product-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(15, 125, 79, 0.12);
+}
+
+.product-badge {
+    display: inline-block;
+    background: #d8f3dc;
+    border-radius: 999px;
+    color: #0b5d3a;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.45rem 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.product-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0b5d3a;
+    margin-bottom: 1rem;
+}
+
+.product-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 1.2rem 0;
+}
+
+.product-card li {
+    padding: 0.35rem 0;
+    color: #334155;
+}
+
+.product-card li::before {
+    content: '✓';
+    color: #0f7d4f;
+    font-weight: 700;
+    margin-right: 0.65rem;
+}
+
+.purchase-panel {
+    background: rgba(11, 93, 58, 0.04);
+    padding: 2rem;
+    border: 1px solid rgba(11, 93, 58, 0.1);
+    border-radius: 18px;
+    margin-bottom: 3rem;
+}
+
+.purchase-panel .form-control,
+.purchase-panel .form-select {
+    min-height: 48px;
+    border-radius: 10px;
+    border: 1px solid rgba(15, 23, 42, 0.15);
+}
+
+.purchase-panel label {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.btn-primary {
+    background-color: #0b5d3a;
+    border-color: #0b5d3a;
+}
+
+.btn-primary:hover {
+    background-color: #084a2f;
+    border-color: #084a2f;
+}
+
+.btn-success {
+    background-color: #0f7d4f;
+    border-color: #0f7d4f;
 }
