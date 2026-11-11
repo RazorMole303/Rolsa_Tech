@@ -1,16 +1,27 @@
 {% extends "base.html" %}
 {% load static %}   
   
-    {% block content %}
-   <img src="{% static 'img/smoke.jpg' %} " width =  "750px" 
-     class="img-fluid" 
-     style="clip-path: polygon(0% 0%, 58% 0%, 100% 28%, 100% 100%, 40% 100%, 0% 72%);" 
-     alt="Panda">
-</div>
-<div style="">
+{% block content %}
+
+<!-- align-items: flex-start aligns both columns strictly to the top -->
+<div style="display: flex; align-items: flex-start; gap: 20px; width: 100%;">
+
+    <!-- 1. LEFT: Image -->
+    <div style="flex: 1;">
+        <img src="{% static 'img/smoke.jpg' %}" 
+             class="img-fluid" 
+             style="clip-path: polygon(0% 0%, 58% 0%, 100% 28%, 100% 100%, 40% 100%, 0% 72%); width: 100%; display: block;" 
+             alt="Panda">
+    </div>
+
+    <!-- 2. RIGHT: Text (Pinned to Top) -->
+    <div style="flex: 1; background-color: black; color: white; font-family: Nico; padding: 30px;">
+        <h1 style="color: #C3423F; margin-top: 0;">About Us</h1>
+        <p style="margin: 0;">
+            Rolsa Technologies operates as an environmental tracking and clean-tech brand. A major part of their mission is helping individuals and businesses monitor, understand, and reduce their ecological footprint through integrated software and tech tools. Our goal is to make the world a cleaner place one customer at a time, and we are looking to get you, yes you on the better side of the environment to maybe help save our beautiful planet
+        </p>
+    </div>
 
 </div>
 
-    {% endblock  %}
-
-     
+{% endblock %}

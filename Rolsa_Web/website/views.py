@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm, StorePurchaseForm
+from .models import StorePurchase
 from django.contrib import messages
 from django.contrib.auth.views import LogoutView, LoginView
 
@@ -78,6 +79,17 @@ def store(request):
         if form.is_valid():
             product_id = form.cleaned_data["product"]
             product = next((item for item in PRODUCTS if item["id"] == product_id), PRODUCTS[0])
+
+            StorePurchase.objects.create(
+                user=request.user if request.user.is_authenticated else None,
+                product=product_id,
+                quantity=form.cleaned_data["quantity"],
+                full_name=form.cleaned_data["full_name"],
+                email=form.cleaned_data["email"],
+                location=form.cleaned_data["location"],
+                notes=form.cleaned_data["notes"],
+            )
+
             messages.success(
                 request,
                 f"Your order for {product['name']} has been received. Our team will contact you at {form.cleaned_data['email']} to confirm delivery and installation.",

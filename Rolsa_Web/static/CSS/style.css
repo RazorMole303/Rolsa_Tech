@@ -30,6 +30,38 @@ body {
     src: url('../font/NicoMoji-Regular.ttf')
 }
 
+:root {
+  --bs-primary: #CD5334;
+  --bs-primary-rgb: 48, 112, 0;
+  --bs-secondary: #C3423F;
+  --bs-secondary-rgb: 226, 182, 10;
+  --bs-tertiary: #FDE74C ;
+  --bs-tertiary-rgb: 253, 231, 76;
+}
+
+.custom-title-bar {
+    background-color: #000000;
+    color: #ff0000;
+    
+}
+
+/* Ensures heading elements inherit the red text color */
+.custom-title-bar h1,
+.custom-title-bar p {
+    color: inherit;
+    font-size: 75px;
+}
+
+body {
+    background-color: #CECECE; /* Light grey */
+}
+
+
+@font-face{
+    font-family: Nico;
+    src: url('../font/NicoMoji-Regular.ttf')
+}
+
 .navbar{
     font-family: Nico;
     font-size: 50px;

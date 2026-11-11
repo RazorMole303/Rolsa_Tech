@@ -26,12 +26,18 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'login' %}">Login</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}">Register</a>
+        </li>
         {% else %}
         <li class="nav-item">
           <form  method="POST" action="{% url 'logout' %}">
             {% csrf_token %}
             <button class="nav-link">Logout</button>
           </form>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'calculator' %}">Carbon Calculator</a>
         </li>
         {% endif %}
       </ul>
